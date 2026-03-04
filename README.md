@@ -8,7 +8,7 @@ And our examples during the workshop!
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/your-username/website-templates.git
+   git clone https://github.com/ShaySapozhnikov/Website-Templates
    ```
 2. Navigate to the WebsiteTemplates folder 
 3. Open `example1.html` in your browser or deploy to your preferred hosting platform
