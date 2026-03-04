@@ -4,6 +4,16 @@ A collection of clean, ready-to-use website templates!.
 And our examples during the workshop!
 
 ---
+## Getting Started
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/your-username/website-templates.git
+   ```
+2. Navigate to the WebsiteTemplates folder 
+3. Open `example1.html` in your browser or deploy to your preferred hosting platform
+
+---
 
 ## Templates
 
@@ -31,13 +41,3 @@ And our examples during the workshop!
 <img width="1470" height="775" alt="Screenshot 2026-03-03 at 9 26 35 PM" src="https://github.com/user-attachments/assets/bd1bbb31-a64b-459b-9152-ec998c44ad1f" />
 
 ---
-
-## Getting Started
-
-1. Clone the repository
-   ```bash
-   git clone https://github.com/your-username/website-templates.git
-   ```
-2. Navigate to the WebsiteTemplates folder 
-3. Open `example1.html` in your browser or deploy to your preferred hosting platform
-
