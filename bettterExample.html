@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional Programmer Portfolio (Kind of)</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #111210;
+    --surface: #1a1a17;
+    --text: #ede8df;
+    --muted: #8a8578;
+    --accent: #e07d4f;
+    --accent2: #c9b97a;
+    --accent-glow: rgba(224, 125, 79, 0.12);
+    --divider: #272722;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Mono', monospace; background-color: var(--bg); color: var(--text); overflow-x: hidden; }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9999; opacity: 0.6;
+  }
+  header { position: relative; padding: 120px 60px 80px; overflow: hidden; }
+  header::after { content: ''; position: absolute; bottom: 0; left: 60px; right: 60px; height: 1px; background: linear-gradient(to right, var(--accent), transparent); opacity: 0.5; }
+  .header-label { font-size: 11px; font-weight: 500; letter-spacing: 0.25em; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; opacity: 0; animation: fadeUp 0.6s ease forwards 0.1s; }
+  header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(56px, 9vw, 120px); font-weight: 400; line-height: 0.95; letter-spacing: -0.02em; color: var(--text); opacity: 0; animation: fadeUp 0.7s ease forwards 0.25s; }
+  header h1 em { font-style: italic; color: var(--accent); }
+  .header-sub { margin-top: 32px; font-size: 13px; color: var(--muted); letter-spacing: 0.05em; max-width: 400px; line-height: 1.8; opacity: 0; animation: fadeUp 0.7s ease forwards 0.4s; }
+  .header-glow { position: absolute; top: -80px; right: -100px; width: 520px; height: 520px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); pointer-events: none; }
+  nav { display: flex; padding: 0 60px; border-bottom: 1px solid var(--divider); position: sticky; top: 0; background: rgba(17,18,16,0.93); backdrop-filter: blur(14px); z-index: 100; }
+  nav a { display: inline-block; padding: 18px 28px; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; cursor: pointer; }
+  nav a:hover { color: var(--text); border-bottom-color: var(--accent); }
+  section { padding: 90px 60px; max-width: 1100px; margin: 0 auto; border-bottom: 1px solid var(--divider); }
+  .section-label { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 48px; display: flex; align-items: center; gap: 12px; }
+  .section-label::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--accent); opacity: 0.35; }
+  #about p { font-family: 'DM Serif Display', serif; font-size: clamp(22px, 2.8vw, 36px); font-weight: 400; line-height: 1.45; color: var(--text); max-width: 700px; }
+  #about p span { color: var(--muted); }
+  #skills .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--divider); }
+  .skill-item { background: var(--bg); padding: 40px 32px; transition: background 0.25s; position: relative; overflow: hidden; }
+  .skill-item::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--accent); transition: height 0.3s ease; }
+  .skill-item:hover { background: var(--surface); }
+  .skill-item:hover::before { height: 100%; }
+  .skill-num { font-size: 10px; letter-spacing: 0.2em; color: var(--muted); margin-bottom: 20px; }
+  .skill-item h3 { font-family: 'DM Serif Display', serif; font-size: 24px; font-weight: 400; color: var(--text); margin-bottom: 10px; }
+  .skill-item p { font-size: 11px; letter-spacing: 0.05em; color: var(--muted); line-height: 1.7; }
+  #projects .projects-list { display: flex; flex-direction: column; }
+  .project-item { display: grid; grid-template-columns: 80px 1fr auto; align-items: center; gap: 40px; padding: 36px 0; border-bottom: 1px solid var(--divider); transition: padding-left 0.3s ease; cursor: default; }
+  .project-item:first-child { border-top: 1px solid var(--divider); }
+  .project-item:hover { padding-left: 16px; }
+  .project-item:hover .proj-arrow { opacity: 1; transform: translateX(0); }
+  .proj-num { font-size: 11px; letter-spacing: 0.15em; color: var(--muted); }
+  .proj-title { font-family: 'DM Serif Display', serif; font-size: clamp(20px, 2.5vw, 30px); font-weight: 400; color: var(--text); }
+  .proj-desc { margin-top: 6px; font-size: 11px; color: var(--muted); letter-spacing: 0.04em; line-height: 1.7; max-width: 500px; }
+  .proj-tag { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent2); white-space: nowrap; }
+  .proj-arrow { display: inline-block; margin-left: 8px; opacity: 0; transform: translateX(-8px); transition: opacity 0.3s, transform 0.3s; }
+  #contact .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .contact-text h2 { font-family: 'DM Serif Display', serif; font-size: clamp(36px, 4vw, 56px); font-weight: 400; line-height: 1.1; color: var(--text); margin-bottom: 20px; }
+  .contact-text h2 em { font-style: italic; color: var(--accent2); }
+  .contact-text p { font-size: 12px; color: var(--muted); line-height: 1.9; letter-spacing: 0.04em; }
+  .contact-form { display: flex; flex-direction: column; gap: 20px; }
+  .form-field { display: flex; flex-direction: column; gap: 8px; }
+  .form-field label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+  .form-field input, .form-field textarea { background: transparent; border: none; border-bottom: 1px solid var(--divider); padding: 10px 0; font-family: 'DM Mono', monospace; font-size: 13px; color: var(--text); outline: none; transition: border-color 0.2s; resize: none; }
+  .form-field input:focus, .form-field textarea:focus { border-bottom-color: var(--accent); }
+  .form-field textarea { min-height: 100px; }
+  .send-btn { align-self: flex-start; margin-top: 8px; padding: 14px 36px; background: var(--accent); color: #111210; border: none; font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, transform 0.1s; }
+  .send-btn:hover { background: #e8915f; }
+  .send-btn:active { transform: scale(0.97); }
+  footer { padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
+  footer .footer-mark { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--text); font-style: italic; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 700px) {
+    header, nav, section, footer { padding-left: 24px; padding-right: 24px; }
+    nav { overflow-x: auto; }
+    #contact .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+    .project-item { grid-template-columns: 50px 1fr; }
+    .proj-tag { display: none; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-glow"></div>
+  <div class="header-label">Portfolio — 2026</div>
+  <h1>Code &amp; <em>Craft</em></h1>
+  <p class="header-sub">Building things that work, and look like they mean it. Coffee-fueled. Detail-obsessed.</p>
+</header>
+<nav>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
+<section id="about">
+  <div class="section-label">01 — About</div>
+  <p>Hello! I'm a programmer who loves writing code, drinking coffee, and building projects that are both functional and visually clean. <span>My goal is to make code look as good as it runs.</span></p>
+</section>
+<section id="skills">
+  <div class="section-label">02 — Skills</div>
+  <div class="skills-grid">
+    <div class="skill-item"><div class="skill-num">01</div><h3>JavaScript</h3><p>Front-end &amp; Node.js development</p></div>
+    <div class="skill-item"><div class="skill-num">02</div><h3>Python</h3><p>Data analysis &amp; automation</p></div>
+    <div class="skill-item"><div class="skill-num">03</div><h3>C++</h3><p>High-performance algorithms</p></div>
+    <div class="skill-item"><div class="skill-num">04</div><h3>HTML &amp; CSS</h3><p>Responsive design &amp; semantic markup</p></div>
+  </div>
+</section>
+<section id="projects">
+  <div class="section-label">03 — Projects</div>
+  <div class="projects-list">
+    <div class="project-item">
+      <div class="proj-num">001</div>
+      <div><div class="proj-title">Project Alpha</div><div class="proj-desc">Interactive web app for task management with real-time collaboration features.</div></div>
+      <div class="proj-tag">Web App <span class="proj-arrow">→</span></div>
+    </div>
+    <div class="project-item">
+      <div class="proj-num">002</div>
+      <div><div class="proj-title">Project Beta</div><div class="proj-desc">Python automation tool streamlining repetitive workflows and data processing.</div></div>
+      <div class="proj-tag">Automation <span class="proj-arrow">→</span></div>
+    </div>
+    <div class="project-item">
+      <div class="proj-num">003</div>
+      <div><div class="proj-title">Project Gamma</div><div class="proj-desc">C++ simulation modeling complex systems efficiently and accurately.</div></div>
+      <div class="proj-tag">Systems <span class="proj-arrow">→</span></div>
+    </div>
+  </div>
+</section>
+<section id="contact">
+  <div class="section-label">04 — Contact</div>
+  <div class="contact-inner">
+    <div class="contact-text">
+      <h2>Let's build something <em>great.</em></h2>
+      <p>Have a project in mind? A problem to solve? Or just want to talk about code? Drop me a message.</p>
+    </div>
+    <div class="contact-form">
+      <div class="form-field"><label>Your Name</label><input type="text" placeholder="Jane Smith"></div>
+      <div class="form-field"><label>Email Address</label><input type="email" placeholder="jane@example.com"></div>
+      <div class="form-field"><label>Message</label><textarea placeholder="Tell me about your project..."></textarea></div>
+      <button class="send-btn">Send Message</button>
+    </div>
+  </div>
+</section>
+<footer>
+  <span class="footer-mark">Portfolio</span>
+  <span>&copy; 2026 — All Rights Reserved</span>
+</footer>
+</body>
+</html>

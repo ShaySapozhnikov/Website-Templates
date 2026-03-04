@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional Programmer Portfolio (Kind of)</title>
+
+<style>
+/* Base Layout */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff; /* AliceBlue */
+    color: #333;
+}
+
+/* Header */
+header {
+    background-color: #ffdead; /* NavajoWhite */
+    padding: 40px;
+    text-align: center;
+    font-family: 'Papyrus', cursive;
+    font-size: 48px;
+    color: #008000; /* Green text */
+    text-shadow: 2px 2px #ff4500; /* Orange shadow */
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+    background-color: #ffe4e1; /* MistyRose */
+}
+
+nav button {
+    padding: 10px 25px;
+    font-family: 'Comic Sans MS', cursive;
+    font-size: 16px;
+    border: 2px solid #ff1493; /* DeepPink border */
+    background-color: #f0fff0; /* Honeydew */
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+nav button:hover {
+    transform: rotate(-5deg) scale(1.2);
+}
+
+/* Sections */
+section {
+    padding: 50px 20px;
+    margin: 20px auto;
+    max-width: 900px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
+}
+
+/* About */
+#about {
+    background-color: #fafad2; /* LightGoldenRodYellow */
+    font-family: 'Courier New', monospace;
+}
+
+/* Skills */
+#skills {
+    background-color: #e6e6fa; /* Lavender */
+    font-family: 'Times New Roman', serif;
+}
+
+.skill-bar {
+    background-color: #d3d3d3;
+    border-radius: 5px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.skill-bar div {
+    height: 20px;
+    width: 70%; /* arbitrary skill level */
+    background-color: #ff6347; /* Tomato */
+    font-size: 12px;
+    text-align: right;
+    color: white;
+    padding-right: 5px;
+    line-height: 20px;
+}
+
+/* Projects */
+#projects {
+    background-color: #f5f5dc; /* Beige */
+}
+
+.project-card {
+    border: 2px dashed #8b0000; /* DarkRed */
+    padding: 20px;
+    margin: 15px 0;
+    font-family: 'Impact', sans-serif;
+    transform: skewX(-2deg);
+}
+
+/* Contact */
+#contact {
+    background-color: #ffe4b5; /* Moccasin */
+}
+
+#contact input, #contact textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-family: 'Verdana', sans-serif;
+    border: 2px dotted #9400d3; /* DarkViolet */
+}
+
+#contact button {
+    padding: 15px 30px;
+    font-family: 'Comic Sans MS', cursive;
+    font-size: 18px;
+    background-color: #7fffd4; /* Aquamarine */
+    border: 2px solid #ff4500; /* OrangeRed */
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#contact button:hover {
+    transform: rotate(10deg) scale(1.1);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffb6c1; /* LightPink */
+    font-family: 'Papyrus', cursive;
+    color: #2f4f4f; /* DarkSlateGray */
+    font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    PORTFOLIO
+</header>
+
+<nav>
+    <button>Home</button>
+    <button>About</button>
+    <button>Projects</button>
+    <button>Contact</button>
+</nav>
+
+<section id="about">
+    <h2>About Me</h2>
+    <p>Hello! I’m a programmer who loves writing code, drinking coffee, and sometimes making websites that look professional but aren’t quite perfect.</p>
+</section>
+
+<section id="skills">
+    <h2>Skills</h2>
+    <div class="skill-bar"><div>JavaScript</div></div>
+    <div class="skill-bar"><div>Python</div></div>
+    <div class="skill-bar"><div>C++</div></div>
+    <div class="skill-bar"><div>HTML & CSS</div></div>
+</section>
+
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="project-card">
+        <h3>Project Alpha</h3>
+        <p>Some description here… very cool project.</p>
+    </div>
+    <div class="project-card">
+        <h3>Project Beta</h3>
+        <p>Another project description… kind of flashy.</p>
+    </div>
+    <div class="project-card">
+        <h3>Project Gamma</h3>
+        <p>Yet another project description… with some weird skew.</p>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact Me</h2>
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Your Email">
+    <textarea placeholder="Your Message"></textarea>
+    <button>Send Message</button>
+</section>
+
+<footer>
+    &copy; 2026 Professional Portfolio (ish) – All Rights Reserved
+</footer>
+
+</body>
+</html>
